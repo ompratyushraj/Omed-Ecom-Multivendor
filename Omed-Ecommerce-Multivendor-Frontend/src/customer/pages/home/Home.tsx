@@ -1,6 +1,10 @@
 import React from "react";
 import GenericCategory from "./GenericCategory";
 import CategoryGrid from "./categorygrid/CategoryGrid";
+import Deals from "./deal/Deals";
+import ShopByCategory from "./shopbycategory/ShopByCategory";
+import { Button } from "@mui/material";
+import { Storefront } from "@mui/icons-material";
 
 const Home = () => {
   return (
@@ -8,6 +12,44 @@ const Home = () => {
       <div className="space-y-5 lg:space-y-10 relative pb-20">
         <GenericCategory />
         <CategoryGrid />
+
+        <section className="pt-20">
+          <h1 className="text-lg lg:text-4xl font-bold text-primary-color pb-5 lg:pb-10 text-center">
+            TODAY'S DEALS
+          </h1>
+          <Deals />
+        </section>
+        <section className="pt-10 pb-10">
+          <h1 className="text-lg lg:text-4xl font-bold text-primary-color pb-5 lg:pb-10 text-center">
+            SHOP BY CATEGORY
+          </h1>
+          <ShopByCategory />
+        </section>
+
+        <section className="lg:px-20 relative h-[200px] lg:h-[450px] object-cover ">
+          <img
+            className="w-full h-full"
+            src="https://zosh-bazzar-zosh.vercel.app/seller_banner_image.jpg"
+            alt=""
+          />
+          <div className="absolute top-1/2 left-4 lg:left-[15rem] transform -translate-y-1/2 font-semibold lg:text-4xl space-y-3">
+            <h1 className="text-center">Sell your Product</h1>
+            <p className="text-lg md:text-2xl text-center">
+              With<span className="logo text-2xl"> OMED </span>
+            </p>
+            <div className="pt-1 flex justify-center">
+              <Button
+                startIcon={<Storefront />}
+                variant="contained"
+                size="large"
+                sx={{ borderRadius: '50px', px:4, py:2, fontSize: "1.1rem" }}
+                color="success"
+              >
+                Become Seller
+              </Button>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

@@ -27,10 +27,11 @@ const Navbar = () => {
               {!isLarge && <IconButton>
                 <MenuIcon />
               </IconButton>}
-              <h1 className="logo cursor-pointer text-lg md:text-2xl">OMED</h1>
+              <h1 className="logo cursor-pointer text-2xl md:text-4xl">OMED</h1>
+
             </div>
             <ul className="flex items-center font-medium text-grey-800">
-              {["Men", "Women", "Children", "Elder"].map((item) => (
+              {["Men", "Women", "Children", "Elder", "Diagnosis Devices"].map((item) => (
                 <li className="mainCategory hover:text-primary-color hover:border-b-2 h-[70px] px-4 border-primary-color flex items-center">
                   {item}
                 </li>
@@ -71,7 +72,7 @@ const Navbar = () => {
               
             </IconButton>
 
-            {isLarge && (<Button color="success" startIcon={<Storefront />} variant="outlined">Become Seller</Button> )}
+            {isLarge && (<Button color="success" sx={{ borderRadius: '50px' }} startIcon={<Storefront />} variant="outlined">Become Seller</Button> )}
           </div>
         </div>
       </Box>
