@@ -1,0 +1,21 @@
+export const uses = [
+  { id: "cough-cold", name: "Cough & Cold", productCount: 2279 },
+  { id: "stomach-care", name: "Stomach Care", productCount: 2034 },
+  { id: "respiratory-care", name: "Respiratory Care", productCount: 1924 },
+  { id: "skin-care", name: "Skin Care", productCount: 1385 },
+  { id: "fever-pain", name: "Fever & Pain Management", productCount: 1119 },
+  { id: "women-care", name: "Women Care", productCount: 906 },
+  { id: "eye-ear-care", name: "Eye & Ear Care", productCount: 833 },
+  { id: "bone-joint-muscle-care", name: "Bone, Joint & Muscle Care", productCount: 777 },
+  { id: "mind-care", name: "Mind Care", productCount: 776 },
+  { id: "kidney-care", name: "Kidney Care", productCount: 722 },
+  { id: "diabetes-care", name: "Diabetes Care", productCount: 710 },
+  { id: "cardiac-care", name: "Cardiac Care", productCount: 579 },
+  { id: "liver-care", name: "Liver Care", productCount: 449 },
+  { id: "nutritional-deficiencies", name: "Nutritional Deficiencies", productCount: 381 },
+  { id: "men-care", name: "Men Care", productCount: 335 },
+  { id: "rectum-piles", name: "Rectum & Piles", productCount: 325 },
+  { id: "sexual-wellness", name: "Sexual Wellness", productCount: 281 },
+  { id: "immunity-booster", name: "Immunity Booster", productCount: 216 },
+  { id: "hair-care", name: "Hair Care", productCount: 197 }
+];
