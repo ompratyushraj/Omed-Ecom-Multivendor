@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-
 import { useTheme } from "@mui/material/styles";
-import { Box, Divider, IconButton, useMediaQuery } from "@mui/material";
+import { Box, Divider, IconButton, Pagination, useMediaQuery } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -10,11 +8,17 @@ import { FilterAlt } from "@mui/icons-material";
 
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
+import { useState } from "react";
 
 const Product = () => {
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const [sort, setsort] = useState("");
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (value: number) => {
+    setPage(value);
+  }
 
   const handleSortChange = (event: any) => {
     setsort(event.target.value);
@@ -77,6 +81,13 @@ const Product = () => {
               <ProductCard />
             ))}
           </section>
+          <div className="flex justify-center py-10">
+            <Pagination
+              onChange={((e, value) => handlePageChange(value))}
+              count={10}
+              variant="outlined"
+              color="primary" />
+          </div>
         </div>
       </div>
     </div>

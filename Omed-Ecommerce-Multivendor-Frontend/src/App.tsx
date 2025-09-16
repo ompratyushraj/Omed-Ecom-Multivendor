@@ -4,6 +4,9 @@ import { ThemeProvider } from "styled-components";
 import custometheme from "./components/theme/custometheme.ts";
 import Home from "./customer/pages/home/Home.tsx";
 import Product from "./customer/pages/product/Product.tsx";
+import ProductDetail from "./customer/pages/productdetail/ProductDetail.tsx";
+import Review from "./customer/pages/review/Review.tsx";
+import Cart from "./customer/pages/cart/cart.tsx";
 
 function App() {
   return (
@@ -11,7 +14,10 @@ function App() {
       <div>
         <Navbar />
         {/* <Home /> */}
-        <Product />
+        {/* <Product /> */}
+        {/* <ProductDetail /> */}
+        {/* <Review /> */}
+        <Cart />
       </div>
     </ThemeProvider>
   );
