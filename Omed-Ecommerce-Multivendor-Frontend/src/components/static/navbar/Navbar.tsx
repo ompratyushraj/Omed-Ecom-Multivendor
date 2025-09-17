@@ -17,12 +17,14 @@ import {
 import CategorySheet from "./CategorySheet";
 import { mainCategory } from "../../../customer/data/category/mainCategory";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const [selectedCategory, setSelectedCategory] = useState("men");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -35,7 +37,7 @@ const Navbar = () => {
                   <MenuIcon />
                 </IconButton>
               )}
-              <h1 className="logo cursor-pointer text-2xl md:text-4xl">OMED</h1>
+              <h1  onClick={()=>navigate("/")} className="logo cursor-pointer text-2xl md:text-4xl">OMED</h1>
             </div>
             <ul className="flex items-center font-medium text-grey-800">
               {mainCategory.map((item) => (
@@ -61,7 +63,7 @@ const Navbar = () => {
             </IconButton>
 
             {true ? (
-              <Button className="flex items-center gap-2">
+              <Button onClick={()=>navigate("/account/order")} className="flex items-center gap-2">
                 <Avatar
                   sx={{ width: 29, height: 29 }}
                   src="http://cdn.pixabay.com/photo/2015/04/09/28/head-723540_640.jpg"
@@ -82,6 +84,7 @@ const Navbar = () => {
 
             <IconButton>
               <LocalGroceryStoreIcon
+                onClick={()=>navigate("/cart")}
                 className="text-grey-700"
                 sx={{ fontSize: 29 }}
                 color="success"

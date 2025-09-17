@@ -6,7 +6,7 @@ const CategoryGrid = () => {
       <div className="col-span-3 row-span-12 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/23807268/2023/6/29/9930b235-5318-4755-abbe-08f99e969e781688026636544LehengaCholi7.jpg"
+          src="https://plus.unsplash.com/premium_vector-1725969952960-93980dfe3e41?q=80&w=711&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>
@@ -14,35 +14,35 @@ const CategoryGrid = () => {
       <div className="col-span-2 row-span-6 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24651572/2023/8/25/4fbf6d8c-d093-46c5-a5a6-7dd67c0c76551692964752597HouseofPataudiMenTanFauxLeatherFormalSlipOnLoafers1.jpg"
+          src="https://plus.unsplash.com/premium_vector-1736343998467-f1589ee9cc08?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>
       <div className="col-span-4 row-span-6 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24651572/2023/8/25/4fbf6d8c-d093-46c5-a5a6-7dd67c0c76551692964752597HouseofPataudiMenTanFauxLeatherFormalSlipOnLoafers1.jpg"
+          src="https://plus.unsplash.com/premium_vector-1712890451225-67ff7904056e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>
       <div className="col-span-3 row-span-12 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24651572/2023/8/25/4fbf6d8c-d093-46c5-a5a6-7dd67c0c76551692964752597HouseofPataudiMenTanFauxLeatherFormalSlipOnLoafers1.jpg"
+          src="https://plus.unsplash.com/premium_vector-1741013046238-5e166f27cffb?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>
       <div className="col-span-4 row-span-6 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24651572/2023/8/25/4fbf6d8c-d093-46c5-a5a6-7dd67c0c76551692964752597HouseofPataudiMenTanFauxLeatherFormalSlipOnLoafers1.jpg"
+          src="https://plus.unsplash.com/premium_vector-1741385696417-85b9645bbc09?q=80&w=859&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>
       <div className="col-span-2 row-span-6 text-white">
         <img
           className="w-full h-full object-cover object-top rounded-md"
-          src="https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/24651572/2023/8/25/4fbf6d8c-d093-46c5-a5a6-7dd67c0c76551692964752597HouseofPataudiMenTanFauxLeatherFormalSlipOnLoafers1.jpg"
+          src="https://plus.unsplash.com/premium_vector-1710425434924-35fdf019d016?q=80&w=737&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
       </div>

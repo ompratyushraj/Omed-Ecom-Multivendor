@@ -5,7 +5,7 @@ const GenericCategoryCard = () => {
     <div>
       <img
         className="object-contain h-10"
-        src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/x/9/j/-original-imahyjzh7m2zsqdg.jpeg?q=70"
+        src="https://plus.unsplash.com/premium_vector-1721742955283-254051f8127b?q=80&w=1020&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Generic Category Icon"
       />
       <h2 className="font-semibold text-sm">Generics</h2>

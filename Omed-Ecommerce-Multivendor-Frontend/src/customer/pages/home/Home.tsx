@@ -29,7 +29,7 @@ const Home = () => {
         <section className="lg:px-20 relative h-[200px] lg:h-[450px] object-cover ">
           <img
             className="w-full h-full"
-            src="https://zosh-bazzar-zosh.vercel.app/seller_banner_image.jpg"
+            src="https://plus.unsplash.com/premium_vector-1697729778014-ec218cb447a7?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
           <div className="absolute top-1/2 left-4 lg:left-[15rem] transform -translate-y-1/2 font-semibold lg:text-4xl space-y-3">
