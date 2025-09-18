@@ -97,6 +97,7 @@ const Navbar = () => {
                 sx={{ borderRadius: "50px" }}
                 startIcon={<Storefront />}
                 variant="outlined"
+                onClick={()=> navigate("/becomeseller")}
               >
                 Become Seller
               </Button>

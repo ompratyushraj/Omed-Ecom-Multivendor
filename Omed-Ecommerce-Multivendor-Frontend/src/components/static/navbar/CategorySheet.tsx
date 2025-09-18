@@ -35,9 +35,7 @@ const CategorySheet = ({ selectedCategory, setShowSheet }: any) => {
 
   return (
     <Box
-      sx={{
-        zIndex: 2,
-      }}
+      sx={{ zIndex: 2 }}
       className="bg-white shadow-lg lg:h-[500px] overflow-y-auto"
     >
       <div className="flex text-sm flex-wrap">

@@ -10,6 +10,8 @@ import Checkout from "./customer/pages/checkout/Checkout.tsx";
 import Cart from "./customer/pages/cart/Cart.tsx";
 import Account from "./customer/pages/account/Account.tsx";
 import { Route, Routes } from "react-router-dom";
+import BecomeSeller from "./seller/sellerauthentication/BecomeSeller.tsx";
+import SellerDashboard from "./seller/sellerpages/sellerdashboard/MainDashboard.tsx";
 
 function App() {
   return (
@@ -24,13 +26,16 @@ function App() {
         {/* <Checkout /> */}
         {/* <Account /> */}
         <Routes>
+          
           <Route path="/" element={<Home />} />
           <Route path="/product/:category" element={<Product />} />
           <Route path="/productdetail/:categoryId/:name/:productId" element={<ProductDetail />} />
           <Route path="/review/:productId" element={<Review />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="becomeseller"element={<BecomeSeller />} />
           <Route path="/account/*" element={<Account />} />
+          <Route path="/seller/*" element={<SellerDashboard />} />
 
         </Routes>
       </div>
