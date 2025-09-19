@@ -24,6 +24,9 @@ import { womenLevelThree } from "../../../customer/data/category/levelThree/wome
 import { elderLevelThree } from "../../../customer/data/category/levelThree/elderLevelThree";
 import { childrenLevelThree } from "../../../customer/data/category/levelThree/childrenLevelThree";
 import { diagnosisdevicesLevelThree } from "../../../customer/data/category/levelThree/diagnosisdevicesLevelThree";
+import CloseIcon from "@mui/icons-material/Close";
+import { colors } from "../../../customer/data/filter/colors";
+import { mainCategory } from "../../../customer/data/category/mainCategory";
 
 const categoryTwo: { [key: string]: any[] } = {
   men: menLevelTwo,
@@ -118,7 +121,6 @@ const SellerAddProduct = () => {
               )}
             </label>
 
-
             {/* Product Image   */}
             <div className="flex flex-wrap gap-2">
               {formik.values.images.map((image, index) => (
@@ -162,9 +164,30 @@ const SellerAddProduct = () => {
               required
             />
           </Grid>
+          
+          {/* Description */}
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              multiline
+              rows={4}
+              fullWidth
+              id="description"
+              name="description"
+              label="Description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.description && Boolean(formik.errors.description)
+              }
+              helperText={
+                formik.touched.description && formik.errors.description
+              }
+              required
+            />
+          </Grid>
 
           {/* MRP Price */}
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md:14, lg:3 }}>
             <TextField
               fullWidth
               id="mrp_price"
@@ -180,7 +203,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Selling Price */}
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, md:14, lg:3 }}>
             <TextField
               fullWidth
               id="sellingPrice"
@@ -201,7 +224,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Color */}
-          <Grid size={{ xs: 12, md:4, lg:3 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <FormControl
               fullWidth
               error={formik.touched.color && Boolean(formik.errors.color)}
@@ -219,6 +242,7 @@ const SellerAddProduct = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
+
                 {colors.map((color, index) => (
                   <MenuItem value={color.name}>
                     <div className="flex gap-3">
@@ -240,7 +264,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Sizes */}
-          <Grid size={{ xs: 12, md:4, lg:3 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 3 }}>
             <FormControl
               fullWidth
               error={formik.touched.sizes && Boolean(formik.errors.sizes)}
@@ -271,7 +295,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Category */}
-          <Grid size={{ xs: 12, md:4, lg:4 }}> 
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -298,7 +322,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Second Category */}
-          <Grid size={{  xs: 12, md:4, lg:4 }}>
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -325,7 +349,7 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Third Category */}
-          <Grid size={{  xs: 12, md:4, lg:4  }}>
+          <Grid size={{ xs: 12, md: 4, lg: 4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -360,10 +384,10 @@ const SellerAddProduct = () => {
           </Grid>
 
           {/* Add Product Button */}
-          <Grid item size={{ xs: 12  }}>
+          <Grid size={{ xs: 12 }}>
             <Button
-              sx={{ p: "14px" }}
-              color="primary"
+              sx={{ p: "14px", borderRadius: "50px" }}
+              color="success"
               variant="contained"
               fullWidth
               type="submit"
@@ -380,7 +404,6 @@ const SellerAddProduct = () => {
             </Button>
           </Grid>
 
-          
         </Grid>
       </form>
     </div>
