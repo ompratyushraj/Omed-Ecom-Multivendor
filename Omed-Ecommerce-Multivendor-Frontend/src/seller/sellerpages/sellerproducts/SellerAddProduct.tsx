@@ -14,10 +14,36 @@ import React, { useState } from "react";
 import { uploadToCloudinary } from "../../../util/uploadToCloudinary";
 import { useFormik } from "formik";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import { menLevelTwo } from "../../../customer/data/category/leveltwo/menLevelTwo";
+import { womenLevelTwo } from "../../../customer/data/category/leveltwo/womenLevelTwo";
+import { childrenLevelTwo } from "../../../customer/data/category/leveltwo/childrenLevelTwo";
+import { elderLevelTwo } from "../../../customer/data/category/leveltwo/elderLevelTwo";
+import { diagnosisdevicesLevelTwo } from "../../../customer/data/category/leveltwo/diagnosisdevicesLevelTwo";
+import { menLevelThree } from "../../../customer/data/category/levelThree/menLevelThree";
+import { womenLevelThree } from "../../../customer/data/category/levelThree/womenLevelThree";
+import { elderLevelThree } from "../../../customer/data/category/levelThree/elderLevelThree";
+import { childrenLevelThree } from "../../../customer/data/category/levelThree/childrenLevelThree";
+import { diagnosisdevicesLevelThree } from "../../../customer/data/category/levelThree/diagnosisdevicesLevelThree";
+
+const categoryTwo: { [key: string]: any[] } = {
+  men: menLevelTwo,
+  women: womenLevelTwo,
+  children: childrenLevelTwo,
+  elderly: elderLevelTwo,
+  diagnosis_devices: diagnosisdevicesLevelTwo,
+};
+
+const categoryThree: { [key: string]: any[] } = {
+  men: menLevelThree,
+  women: womenLevelThree,
+  children: childrenLevelThree,
+  elderly: elderLevelThree,
+  diagnosis_devices: diagnosisdevicesLevelThree,
+};
 
 const SellerAddProduct = () => {
-  const [uploadImage, setUploadImage] = useState(false);
 
+  const [uploadImage, setUploadImage] = useState(false);
   const [snackbarOpen, setOpenSnackbar] = useState(false);
 
   const formik = useFormik({
@@ -70,6 +96,8 @@ const SellerAddProduct = () => {
     <div>
       <form onSubmit={formik.handleSubmit} className="space-y-4 p-4">
         <Grid container spacing={2}>
+
+          {/* Input Image */}
           <Grid className="flex flex-wrap gap-5" size={{ xs: 12 }}>
             <input
               type="file"
@@ -90,6 +118,8 @@ const SellerAddProduct = () => {
               )}
             </label>
 
+
+            {/* Product Image   */}
             <div className="flex flex-wrap gap-2">
               {formik.values.images.map((image, index) => (
                 <div className="relative">
@@ -118,6 +148,7 @@ const SellerAddProduct = () => {
             </div>
           </Grid>
 
+          {/* Title  */}
           <Grid size={{ xs: 12 }}>
             <TextField
               fullWidth
@@ -132,6 +163,7 @@ const SellerAddProduct = () => {
             />
           </Grid>
 
+          {/* MRP Price */}
           <Grid size={{ xs: 12 }}>
             <TextField
               fullWidth
@@ -147,6 +179,7 @@ const SellerAddProduct = () => {
             />
           </Grid>
 
+          {/* Selling Price */}
           <Grid size={{ xs: 12 }}>
             <TextField
               fullWidth
@@ -167,7 +200,8 @@ const SellerAddProduct = () => {
             />
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          {/* Color */}
+          <Grid size={{ xs: 12, md:4, lg:3 }}>
             <FormControl
               fullWidth
               error={formik.touched.color && Boolean(formik.errors.color)}
@@ -205,7 +239,8 @@ const SellerAddProduct = () => {
             </FormControl>
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          {/* Sizes */}
+          <Grid size={{ xs: 12, md:4, lg:3 }}>
             <FormControl
               fullWidth
               error={formik.touched.sizes && Boolean(formik.errors.sizes)}
@@ -235,7 +270,8 @@ const SellerAddProduct = () => {
             </FormControl>
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          {/* Category */}
+          <Grid size={{ xs: 12, md:4, lg:4 }}> 
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -261,7 +297,8 @@ const SellerAddProduct = () => {
             </FormControl>
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          {/* Second Category */}
+          <Grid size={{  xs: 12, md:4, lg:4 }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -287,7 +324,8 @@ const SellerAddProduct = () => {
             </FormControl>
           </Grid>
 
-          <Grid size={{ xs: 12 }}>
+          {/* Third Category */}
+          <Grid size={{  xs: 12, md:4, lg:4  }}>
             <FormControl
               fullWidth
               error={formik.touched.category && Boolean(formik.errors.category)}
@@ -321,7 +359,8 @@ const SellerAddProduct = () => {
             </FormControl>
           </Grid>
 
-          <Grid item size={{ xs: 12 }}>
+          {/* Add Product Button */}
+          <Grid item size={{ xs: 12  }}>
             <Button
               sx={{ p: "14px" }}
               color="primary"
@@ -340,6 +379,8 @@ const SellerAddProduct = () => {
               )}
             </Button>
           </Grid>
+
+          
         </Grid>
       </form>
     </div>
