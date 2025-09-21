@@ -5,13 +5,16 @@ import { Add, AddShoppingCart, FavoriteBorder, LocalShipping, Remove, Shield, Wa
 import { teal } from '@mui/material/colors';
 import SimilarProduct from './SimilarProduct';
 import ReviewCard from '../review/ReviewCard';
+import { useAppDispatch } from '../../../state/Store';
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useAppDispatch();
   return (
     <div className='px-5 lg:px-20 pt-10'>
 
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
+
         <section className='flex flex-col lg:flex-row gap-5'>
           <div className='w-full lg:w-[15%] flex flex-wrap lg:flex-col gap-3'>
             {[1, 1, 1, 1].map((item) => <img className='lg:w-full w-[50px]
@@ -21,6 +24,7 @@ const ProductDetail = () => {
             <img className='w-full rounded-md' src="https://plus.unsplash.com/premium_vector-1710931444693-a6003cbac637?q=80&w=737&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="productprimaryimage" />
           </div>
         </section>
+
         <section>
           <h1 className="font-bold text-lg text-primary-color">
             Raam Clothing

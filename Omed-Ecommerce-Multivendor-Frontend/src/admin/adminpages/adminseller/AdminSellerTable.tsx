@@ -48,7 +48,7 @@ const AdminSellerTable = () => {
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
+          <TableHead sx={{ borderRadius: "50px"}}>
             <TableRow>
               <StyledTableCell>Seller Id</StyledTableCell>
               <StyledTableCell>Name</StyledTableCell>

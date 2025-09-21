@@ -3,15 +3,10 @@ import "./ProductCard.css";
 import { Button } from "@mui/material";
 import { Favorite, ModeComment } from "@mui/icons-material";
 import { teal } from "@mui/material/colors";
+import type { Product } from "../../../type/ProductType";
 
-const images = [
-  "https://plus.unsplash.com/premium_photo-1673292293042-cafd9c8a3ab3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_vector-1697729804286-7dd6c1a04597?q=80&w=1070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1669839774770-df5a3d2da257?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZnJlZXxlbnwwfHwwfHx8MA%3D%3D",
-  "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?ixlib=rb-4.1.0&auto=format&fit=crop&w=600&q=60",
-];
 
-const ProductCard = () => {
+const ProductCard = ({item}:{item}:Product) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -19,7 +14,7 @@ const ProductCard = () => {
     let interval: any;
     if (isHovered) {
       interval = setInterval(() => {
-        setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+        setCurrentImage((prevImage) => (prevImage + 1) % item.images.length);
       }, 1000);
     } else if (interval) {
       clearInterval(interval);
@@ -37,7 +32,7 @@ const ProductCard = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {images.map((item, index) => (
+          {item.images.map((item, index) => (
             <img
               key={index}
               className="card-media object-top"
@@ -65,13 +60,13 @@ const ProductCard = () => {
 
         <div className="details pt-3 space-y-1 group-hover-effect rounded-md">
           <div className="name">
-            <h1>Niky</h1>
-            <p>Blue Shirt</p>
+            <h1>{item.seller?.businessDetails.businessName}</h1>
+            <p>{item.title}</p>
           </div>
           <div className="price flex items-center gap-3">
-            <span className="font-sans text-gray-800">₹ 400</span>
-            <span className="thin-line-through text-gray-400">₹ 999</span>
-            <span className="text-primary-color font-semibold">60%</span>
+            <span className="font-sans text-gray-800">₹ {item.sellingPrice}</span>
+            <span className="thin-line-through text-gray-400">₹ {item.mrpPrice}</span>
+            <span className="text-primary-color font-semibold">{item.discountPercentage}%</span>
           </div>
         </div>
 

@@ -8,13 +8,21 @@ import { FilterAlt } from "@mui/icons-material";
 
 import FilterSection from "./FilterSection";
 import ProductCard from "./ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../state/Store";
+import { useParams, useSearchParams } from "react-router-dom";
+import { fetchAllProducts } from "../../../state/customer/customerProductSlice";
 
 const Product = () => {
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const [sort, setsort] = useState("");
   const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const {category} = useParams();
+  const dispatch = useAppDispatch();
+  const {product} = useAppSelector(store=>store)
+
 
   const handlePageChange = (value: number) => {
     setPage(value);
@@ -23,6 +31,21 @@ const Product = () => {
   const handleSortChange = (event: any) => {
     setsort(event.target.value);
   };
+
+  useEffect(() => {
+    const [minPrice, maxPrice] = searchParams.get("price")?.split("-") || [];
+    const color = searchParams.get("color");
+    const minDiscount = searchParams.get("discount")?Number(searchParams.get("discount")):undefined;
+    const pageNumber = page-1;
+    const newFilter = {
+      color: color || "",
+      minPrice: minPrice?Number(minPrice):undefined,
+      maxPrice: maxPrice?Number(maxPrice):undefined,
+      minDiscount,
+      pageNumber
+    }
+    dispatch(fetchAllProducts({}))
+  }, [category, searchParams])
 
   return (
     <div className="-z-10 mt-10">
@@ -77,8 +100,8 @@ const Product = () => {
           <Divider />
 
           <section className="products_section grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-5 px-5 justify-center">
-            {[1, 1, 1, 1, 1, 1, 1].map((item) => (
-              <ProductCard />
+            {product.products.map((item) => (
+              <ProductCard item={item}/>
             ))}
           </section>
           <div className="flex justify-center py-10">

@@ -27,6 +27,8 @@ import { diagnosisdevicesLevelThree } from "../../../customer/data/category/leve
 import CloseIcon from "@mui/icons-material/Close";
 import { colors } from "../../../customer/data/filter/colors";
 import { mainCategory } from "../../../customer/data/category/mainCategory";
+import { createProduct } from "../../../state/seller/sellerProductSlice";
+import { useAppDispatch } from "../../../state/Store";
 
 const categoryTwo: { [key: string]: any[] } = {
   men: menLevelTwo,
@@ -48,6 +50,7 @@ const SellerAddProduct = () => {
 
   const [uploadImage, setUploadImage] = useState(false);
   const [snackbarOpen, setOpenSnackbar] = useState(false);
+  const dispatch = useAppDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -66,6 +69,7 @@ const SellerAddProduct = () => {
     // validationSchema: validationSchema,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(createProduct({request:values, jwt:localStorage.getItem("jwt")}));
     },
   });
 
@@ -73,6 +77,8 @@ const SellerAddProduct = () => {
     const file = event.target.files[0];
     setUploadImage(true);
     const image = await uploadToCloudinary(file);
+    // const image = (await uploadToCloudinary(file)).secure_url;
+
 
     formik.setFieldValue("images", [...formik.values.images, image]);
     setUploadImage(false);
@@ -124,7 +130,7 @@ const SellerAddProduct = () => {
             {/* Product Image   */}
             <div className="flex flex-wrap gap-2">
               {formik.values.images.map((image, index) => (
-                <div className="relative">
+                <div className="relative" key={index}>
                   <img
                     className="w-24 h-24 object-cover"
                     key={index}

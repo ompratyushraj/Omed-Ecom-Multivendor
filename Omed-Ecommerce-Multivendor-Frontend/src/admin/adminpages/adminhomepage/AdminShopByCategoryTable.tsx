@@ -1,9 +1,10 @@
 import React from 'react'
+import AdminHomeCategoryTable from './AdminHomeCategoryTable'
 
 const AdminShopByCategoryTable = () => {
   return (
     <div>
-      <h1>Admin Shop By Category Table</h1>
+      <AdminHomeCategoryTable />
     </div>
   )
 }

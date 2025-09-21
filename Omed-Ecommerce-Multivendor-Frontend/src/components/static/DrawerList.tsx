@@ -1,6 +1,8 @@
 import { Divider, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../state/Store";
+import { logout } from "../../state/AuthSlice";
 
 interface menuItem {
   name: string;
@@ -18,6 +20,12 @@ interface DrawerListProp {
 const DrawerList = ({ menu, menu2, toggleDrawer }: DrawerListProp) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout(navigate));
+  }
+
   return (
     <div className="h-full">
       <div className="flex flex-col justify-between h-full w-[300px] border-r py-5 mx-5">
@@ -46,11 +54,14 @@ const DrawerList = ({ menu, menu2, toggleDrawer }: DrawerListProp) => {
                 </div>
               ))}
             </div>
+
             <Divider />
+
             <div className="space-y-2">
               {menu2.map((item, index) => (
                 <div
-                  onClick={() => navigate(item.path)}
+                  onClick={() => {navigate(item.path)
+                    if(item.path=="/") handleLogout()}}
                   className="pr-9 cursor-pointer"
                   key={index}
                 >
