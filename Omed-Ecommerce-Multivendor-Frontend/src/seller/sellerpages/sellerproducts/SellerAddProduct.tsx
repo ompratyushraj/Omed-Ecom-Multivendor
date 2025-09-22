@@ -77,9 +77,7 @@ const SellerAddProduct = () => {
     const file = event.target.files[0];
     setUploadImage(true);
     const image = await uploadToCloudinary(file);
-    // const image = (await uploadToCloudinary(file)).secure_url;
-
-
+    
     formik.setFieldValue("images", [...formik.values.images, image]);
     setUploadImage(false);
   };

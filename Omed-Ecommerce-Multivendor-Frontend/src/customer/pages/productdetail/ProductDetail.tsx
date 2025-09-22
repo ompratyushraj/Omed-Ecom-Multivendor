@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import { Button, Divider } from '@mui/material';
 import { Add, AddShoppingCart, FavoriteBorder, LocalShipping, Remove, Shield, Wallet, WorkspacePremium } from '@mui/icons-material';
 import { teal } from '@mui/material/colors';
 import SimilarProduct from './SimilarProduct';
 import ReviewCard from '../review/ReviewCard';
-import { useAppDispatch } from '../../../state/Store';
+import { useAppDispatch, useAppSelector } from '../../../state/Store';
+import { useParams } from 'react-router-dom';
+import { fetchProductById } from '../../../state/customer/customerProductSlice';
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
+  const {productId} = useParams();
+  const {product} = useAppSelector(store => store.customerProduct)
+  const [activeImage, setActiveImgae] = useState(0);
+
+  useEffect(() => {
+    dispatch(fetchProductById(Number(productId)))
+  }, [productId]);
+
+  const handleActiveImage = (value:number) => () => {
+    setActiveImgae(value);
+  }
   return (
     <div className='px-5 lg:px-20 pt-10'>
 
@@ -17,19 +30,19 @@ const ProductDetail = () => {
 
         <section className='flex flex-col lg:flex-row gap-5'>
           <div className='w-full lg:w-[15%] flex flex-wrap lg:flex-col gap-3'>
-            {[1, 1, 1, 1].map((item) => <img className='lg:w-full w-[50px]
-          cursor-pointer rounded-md' src="https://plus.unsplash.com/premium_vector-1728360411981-41f3ca5eaa0b?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="productsecondaryimage" />)}
+            {product?.images.map((item, index) => <img onClick={handleActiveImage(index)} className='lg:w-full w-[50px] bg-neutral-400
+          cursor-pointer rounded-md' src={item} alt="productsecondaryimage" />)}
           </div>
           <div className='w-full lg:w-[85%]'>
-            <img className='w-full rounded-md' src="https://plus.unsplash.com/premium_vector-1710931444693-a6003cbac637?q=80&w=737&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="productprimaryimage" />
+            <img className='w-full rounded-md bg-slate-400' src={product?.images[activeImage]} alt="productprimaryimage" />
           </div>
         </section>
 
         <section>
           <h1 className="font-bold text-lg text-primary-color">
-            Raam Clothing
+            {product?.seller?.businessDetails.businessName}
           </h1>
-          <p className="text-gray-500 font-semibold">men black shirt</p>
+          <p className="text-gray-500 font-semibold">{product?.productTitle}</p>
           <div className="flex justify-between items-center py-2 border w-[180px] px-3 mt-5">
             <div className="flex gap-1 items-center">
               <span>4</span>
@@ -44,13 +57,13 @@ const ProductDetail = () => {
           <div
             className='price flex items-center gap-3 mt-5 text-2xl'>
             <span className="font-sans text-gray-800">
-              ₹ 400
+              ₹ {product?.sellingPrice}
             </span>
             <span className="line-through text-gray-400">
-              ₹ 999
+              ₹ {product?.mrpPrice}
             </span>
             <span className='text-primary-color font-semibold'>
-              60%
+              {product?.discountPercent}%
             </span>
           </div>
           <p>Inclusive of all taxes. Free Shipping above ₹1500.</p>
@@ -119,9 +132,7 @@ const ProductDetail = () => {
 
 
           <div className='mt-5'>
-            <p>The saree comes with an unstitched blouse piece The blouse worn by the
-              model might be for modelling purpose only. Check the image of the blouse
-              piece to understand how the actual blouse piece looks like.</p>
+            <p>{product?.description}</p>
           </div>
 
           <div className='mt-7'>

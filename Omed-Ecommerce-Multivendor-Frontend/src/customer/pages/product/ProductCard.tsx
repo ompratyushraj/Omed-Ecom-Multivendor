@@ -3,15 +3,17 @@ import "./ProductCard.css";
 import { Button } from "@mui/material";
 import { Favorite, ModeComment } from "@mui/icons-material";
 import { teal } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 import type { Product } from "../../../type/ProductType";
 
 
-const ProductCard = ({item}:{item}:Product) => {
+const ProductCard = ({item}:{item:Product}) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let interval: any;
+    let interval: any | undefined;
     if (isHovered) {
       interval = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % item.images.length);
@@ -26,7 +28,7 @@ const ProductCard = ({item}:{item}:Product) => {
 
   return (
     <>
-      <div className="group px-4 relative">
+      <div onClick={() => navigate(`/productdetail/${item.category?.categoryId}/${item.productTitle}/${item.productId}`)} className="group px-4 relative">
         <div
           className="card"
           onMouseEnter={() => setIsHovered(true)}
@@ -39,7 +41,7 @@ const ProductCard = ({item}:{item}:Product) => {
               src={item}
               alt="cardimages"
               style={{
-                transform: `translateX(${(index - currentImage) * 100}%)`,
+                transform: `translateX(${(index - currentImage) * 100}%)`, backgroundColor:"lightgrey", borderRadius:"20px"
               }}
             />
           ))}
@@ -61,12 +63,12 @@ const ProductCard = ({item}:{item}:Product) => {
         <div className="details pt-3 space-y-1 group-hover-effect rounded-md">
           <div className="name">
             <h1>{item.seller?.businessDetails.businessName}</h1>
-            <p>{item.title}</p>
+            <p>{item.productTitle}</p>
           </div>
           <div className="price flex items-center gap-3">
             <span className="font-sans text-gray-800">₹ {item.sellingPrice}</span>
             <span className="thin-line-through text-gray-400">₹ {item.mrpPrice}</span>
-            <span className="text-primary-color font-semibold">{item.discountPercentage}%</span>
+            <span className="text-primary-color font-semibold">{item.discountPercent}%</span>
           </div>
         </div>
 

@@ -42,7 +42,7 @@ const Navbar = () => {
             <ul className="flex items-center font-medium text-grey-800">
               {mainCategory.map((item) => (
                 <li
-                  // key={item.categoryId}
+                  key={item.categoryId}
                   onMouseLeave={() => {
                     setShowCategorySheet(false);
                   }}

@@ -99,7 +99,7 @@ export const customerProductSlice = createSlice({
     });
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.products = action.payload;
+      state.products = action.payload.content;
     });
     builder.addCase(fetchAllProducts.rejected, (state, action) => {
       state.loading = false;

@@ -21,7 +21,7 @@ const Product = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const {category} = useParams();
   const dispatch = useAppDispatch();
-  const {product} = useAppSelector(store=>store)
+  const {products} = useAppSelector((store) => store.customerProduct)
 
 
   const handlePageChange = (value: number) => {
@@ -44,7 +44,7 @@ const Product = () => {
       minDiscount,
       pageNumber
     }
-    dispatch(fetchAllProducts({}))
+    dispatch(fetchAllProducts(newFilter))
   }, [category, searchParams])
 
   return (
@@ -100,7 +100,7 @@ const Product = () => {
           <Divider />
 
           <section className="products_section grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-5 px-5 justify-center">
-            {product.products.map((item) => (
+            {products.map((item) => (
               <ProductCard item={item}/>
             ))}
           </section>
