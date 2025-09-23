@@ -18,6 +18,7 @@ import CategorySheet from "./CategorySheet";
 import { mainCategory } from "../../../customer/data/category/mainCategory";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../state/Store";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -25,7 +26,8 @@ const Navbar = () => {
   const [selectedCategory, setSelectedCategory] = useState("men");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
   const navigate = useNavigate();
-
+  const { auth } = useAppSelector(store => store);
+ 
   return (
     <>
       <Box className="sticky top-0 left-0 right-0 bg-white" sx={{ zIndex: 2 }}>
@@ -62,18 +64,20 @@ const Navbar = () => {
               <SearchIcon />
             </IconButton>
 
-            {true ? (
+            {auth.user ? (
               <Button onClick={()=>navigate("/account/order")} className="flex items-center gap-2">
                 <Avatar
                   sx={{ width: 29, height: 29 }}
                   src="http://cdn.pixabay.com/photo/2015/04/09/28/head-723540_640.jpg"
                 />
                 <h1 className="font-semibold hidden lg:block text-primary-color">
-                  OMED
+                  {/* {auth.user?.firstName} */}
+                  {(auth.user?.firstName || "") + " " + (auth.user?.lastName || "")}
+
                 </h1>
               </Button>
             ) : (
-              <Button variant="contained" className="text-primary-color">
+              <Button variant="contained" onClick={() => navigate("/login")} className="text-primary-color">
                 Login
               </Button>
             )}

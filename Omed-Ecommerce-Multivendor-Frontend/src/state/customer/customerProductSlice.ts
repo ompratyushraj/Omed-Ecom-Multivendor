@@ -4,7 +4,7 @@ import type { Product } from "../../type/ProductType";
 
 const API_URL = "/products";
 
-export const fetchProductById = createAsyncThunk("products/fetchProductById",
+export const fetchProductById = createAsyncThunk<any, any>("products/fetchProductById",
   async (productId, { rejectWithValue }) => {
     try {
       const response = await api.get(`${API_URL}/${productId}`);
