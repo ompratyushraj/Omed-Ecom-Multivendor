@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import sellerSlice from "./seller/sellerSlice";
 import sellerProductSlice from "./seller/sellerProductSlice";
-import customerProductSlice from "./customer/customerProductSlice";
+import customerProductSlice from "./user/customerProductSlice";
 import authSlice from "./AuthSlice";
-import cartSlice from "./customer/cartSlice"
-import orderSlice from "./customer/orderSlice"
-import couponSlice from "./customer/couponSlice"
-import wishlistSlice from "./customer/wishlistSlice"
+import cartSlice from "./user/cartSlice"
+import orderSlice from "./user/orderSlice"
+import couponSlice from "./user/couponSlice"
+import wishlistSlice from "./user/wishlistSlice"
 import sellerOrderSlice from "./seller/sellerOrderSlice"
-import transactionSlice from "./seller/transactionSlice"
+import transactionSlice from "./transactionSlice"
 import homeCategorySlice from "./admin/adminSlice"
-import customerSlice from "./customer/customerSlice"
+import customerSlice from "./customerSlice"
 import dealSlice from "./admin/dealSlice"
 
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Order, OrderStatus } from "../../type/OrderType";
-import { api } from "../../config/Api";
+import { api } from "../../config/api";
 
 // Thanks for async actions
 export const fetchSellerOrders = createAsyncThunk<Order[], string>(

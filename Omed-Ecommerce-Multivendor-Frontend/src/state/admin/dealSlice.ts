@@ -1,4 +1,4 @@
-import { api } from "../../config/Api";
+import { api } from "../../config/api";
 import type { ApiResponse, Deal, DealsState } from "../../type/DealType";
 
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';

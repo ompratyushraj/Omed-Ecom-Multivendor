@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
-import SellerAddProduct from '../seller/sellerpages/sellerproducts/SellerAddProduct'
-import SellerOrder from '../seller/sellerpages/sellerorders/SellerOrder'
-import SellerProduct from '../seller/sellerpages/sellerproducts/SellerProduct'
-import SellerProfile from '../seller/sellerpages/sellerAccount/SellerProfile'
-import SellerPayment from '../seller/sellerpages/sellerpayment/SellerPayment'
-import SellerTransaction from '../seller/sellerpages/sellerpayment/SellerTransaction'
-import SellerDashboard from '../seller/sellerpages/sellerdashboard/SellerDashboard'
+import SellerAddProduct from '../pages/seller/SellerAddProduct'
+import SellerOrder from '../pages/seller/SellerOrder'
+import SellerProduct from '../pages/seller/SellerProduct'
+import SellerProfile from '../pages/seller/SellerProfile'
+import SellerPayment from '../pages/seller/SellerPayment'
+import SellerTransaction from '../pages/seller/SellerTransaction'
+import SellerDashboard from '../pages/seller/SellerDashboard'
 
 const SellerRoutes = () => {
   return (

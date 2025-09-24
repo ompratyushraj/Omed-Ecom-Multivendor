@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { Coupon } from "../../type/CouponType";
-import { api } from "../../config/Api";
+import { api } from "../../config/api";
 
 const API_URL = "/api/coupons";
 // Async thunks

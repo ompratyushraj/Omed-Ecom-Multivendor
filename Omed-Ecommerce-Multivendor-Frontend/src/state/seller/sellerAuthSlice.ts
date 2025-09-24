@@ -1,5 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../config/Api";
+import { api } from "../../config/api";
+
+// Should be named as sellerSlice.ts
+
 
 export const sellerLogin = createAsyncThunk<any, any>("auth/signin", 
     async(loginRequest:{email:string}, {rejectWithValue}) => {
