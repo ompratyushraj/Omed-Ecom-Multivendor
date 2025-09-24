@@ -6,6 +6,16 @@ import sellerSlice from "./seller/sellerSlice";
 import sellerProductSlice from "./seller/sellerProductSlice";
 import customerProductSlice from "./customer/customerProductSlice";
 import authSlice from "./AuthSlice";
+import cartSlice from "./customer/cartSlice"
+import orderSlice from "./customer/orderSlice"
+import couponSlice from "./customer/couponSlice"
+import wishlistSlice from "./customer/wishlistSlice"
+import sellerOrderSlice from "./seller/sellerOrderSlice"
+import transactionSlice from "./seller/transactionSlice"
+import homeCategorySlice from "./admin/adminSlice"
+import customerSlice from "./customer/customerSlice"
+import dealSlice from "./admin/dealSlice"
+
 
 // Combine reducers
 const rootReducer = combineReducers({
@@ -13,6 +23,17 @@ const rootReducer = combineReducers({
   sellerProduct: sellerProductSlice,
   customerProduct: customerProductSlice,
   auth: authSlice,
+  cart: cartSlice,
+  order: orderSlice,
+  coupon: couponSlice,
+  wishlist: wishlistSlice,
+  customer: customerSlice,
+
+  sellerOrder: sellerOrderSlice,
+  transaction: transactionSlice,
+
+  admin: homeCategorySlice,
+  deal: dealSlice,
 });
 
 // Configure store

@@ -3,8 +3,11 @@ import DealCard from "./DealCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useAppDispatch, useAppSelector } from "../../../../state/Store";
 
 const Deals = () => {
+  const dispatch = useAppDispatch();
+  const {customer} = useAppSelector(store => store);
   const settings = {
     dots: true,
     infinite: true,
@@ -16,9 +19,9 @@ const Deals = () => {
   return (
     <div className="py-5 lg:px-20">
         <Slider {...settings}>
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {customer.homePageData?.deals.slice(0,6).map((item, index) => (
             <div key={index} className="px-2">
-              <DealCard />
+              <DealCard item={item} />
             </div>
           ))}
         </Slider>

@@ -3,13 +3,15 @@ import { useFormik } from 'formik';
 import { Box, Button, TextField } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import * as Yup from "Yup";
+import { useAppDispatch } from '../../../state/Store';
+import { createOrder } from '../../../state/customer/orderSlice';
 
 
 const AddressFormSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
-    mobile: Yup.string().required("Mobile number is required").matches(/^[6-9]\d{10}$/,
+    mobile: Yup.string().required("Mobile number is required").matches(/^[6-9]\d{9}$/,
         "Invalid mobile number"),
-    pinCode: Yup.string().required("Pin code is required").matches(/^[1-9][0-9]{6}$/,
+    pinCode: Yup.string().required("Pin code is required").matches(/^[1-9][0-9]{5}$/,
         "Invalid pin code"),
     address: Yup.string().required("Address is required"),
     city: Yup.string().required("City is required"),
@@ -17,7 +19,8 @@ const AddressFormSchema = Yup.object().shape({
     locality: Yup.string().required("Locality is required"),
 })
 
-const AddressForm = () => {
+const AddressForm = ({paymentGateway}:any) => {
+    const dispatch = useAppDispatch();
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -30,6 +33,11 @@ const AddressForm = () => {
         },
         validationSchema: AddressFormSchema,
         onSubmit: (values) => {
+            dispatch(createOrder({
+                address:values,
+                jwt:localStorage.getItem("jwt") || "",
+                paymentGateway:paymentGateway,
+            }))
             console.log(values);
         }
     });

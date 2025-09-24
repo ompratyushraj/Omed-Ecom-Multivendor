@@ -1,14 +1,15 @@
 import React from "react";
+import type { HomeCategory } from "../../../type/HomeCategoryType";
 
-const GenericCategoryCard = () => {
+const GenericCategoryCard = ({item}:{item:HomeCategory}) => {
   return (
-    <div className="mx-5">
+    <div className="mx-5 flex flex-col gap-2 justify-center">
       <img
-        className="object-contain h-10 rounded-md ms-0.5 ps"
-        src="https://plus.unsplash.com/premium_vector-1721742955283-254051f8127b?q=80&w=1020&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        className="object-contain h-10 rounded-md ms-0.5 ps w-10 bg-slate-400"
+        src={item.image}
         alt="Generic Category Icon"
       />
-      <h2 className="font-semibold text-sm">Generics</h2>
+      <h2 className="font-semibold text-sm text-center">{item.name}</h2>
     </div>
   );
 };

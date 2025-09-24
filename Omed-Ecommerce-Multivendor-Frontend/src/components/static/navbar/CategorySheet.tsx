@@ -1,15 +1,16 @@
-import { menLevelTwo } from '../../../customer/data/category/leveltwo/menLevelTwo';
-import { menLevelThree } from '../../../customer/data/category/levelThree/menLevelThree';
-import { womenLevelTwo } from '../../../customer/data/category/leveltwo/womenLevelTwo';
-import { childrenLevelTwo } from '../../../customer/data/category/leveltwo/childrenLevelTwo';
-import { elderLevelTwo } from '../../../customer/data/category/leveltwo/elderLevelTwo';
-import { womenLevelThree } from '../../../customer/data/category/levelThree/womenLevelThree';
-import { childrenLevelThree } from '../../../customer/data/category/levelThree/childrenLevelThree';
-import { diagnosisdevicesLevelThree } from '../../../customer/data/category/levelThree/diagnosisdevicesLevelThree';
-import { diagnosisdevicesLevelTwo } from '../../../customer/data/category/leveltwo/diagnosisdevicesLevelTwo';
-import { Box } from '@mui/material';
-import { elderLevelThree } from '../../../customer/data/category/levelThree/elderLevelThree';
+
 import { useNavigate } from 'react-router-dom';
+import { menLevelTwo } from '../../../data/category/leveltwo/menLevelTwo';
+import { womenLevelTwo } from '../../../data/category/leveltwo/womenLevelTwo';
+import { childrenLevelTwo } from '../../../data/category/leveltwo/childrenLevelTwo';
+import { elderLevelTwo } from '../../../data/category/leveltwo/elderLevelTwo';
+import { diagnosisdevicesLevelTwo } from '../../../data/category/leveltwo/diagnosisdevicesLevelTwo';
+import { menLevelThree } from '../../../data/category/levelThree/menLevelThree';
+import { womenLevelThree } from '../../../data/category/levelThree/womenLevelThree';
+import { childrenLevelThree } from '../../../data/category/levelThree/childrenLevelThree';
+import { elderLevelThree } from '../../../data/category/levelThree/elderLevelThree';
+import { diagnosisdevicesLevelThree } from '../../../data/category/levelThree/diagnosisdevicesLevelThree';
+import { Box } from '@mui/material';
 
 const categoryTwo: { [key: string]: any[] } = {
   men: menLevelTwo,

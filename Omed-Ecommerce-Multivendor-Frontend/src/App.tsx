@@ -16,9 +16,12 @@ import AdminDashboard from "./admin/adminpages/admindashboard/AdminDashboard.tsx
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./state/Store.ts";
 import { fetchSellerProfile } from "./state/seller/sellerSlice.ts";
-import CustomerLoginForm from "./customer/pages/Auth/CustomerLoginForm.tsx";
 import CustomerAuth from "./customer/pages/Auth/CustomerAuth.tsx";
 import { fetchUserProfile } from "./state/AuthSlice.ts";
+import PaymentSuccess from "./customer/pages/payment/PaymentSuccess.tsx";
+import Wishlist from "./customer/pages/wishlist/Wishlist.tsx";
+import { createHomeCategories } from "./state/customer/customerSlice.ts";
+import { homeCategories } from "./data/HomeCategores.ts";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,13 +30,14 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchSellerProfile(localStorage.getItem("jwt") || ""));
+    dispatch(createHomeCategories(homeCategories));
   }, []);
 
-  useEffect(() => {
-    if (seller.profile) {
-      navigate("/seller");
-    }
-  }, [seller.profile]);
+  // useEffect(() => {
+  //   if (seller.profile) {
+  //     navigate("/");
+  //   }
+  // }, [seller.profile]);
 
   useEffect(() => {
     dispatch(fetchUserProfile({jwt: auth.jwt || localStorage.getItem("jwt")}))
@@ -59,7 +63,9 @@ function App() {
           />
           <Route path="/review/:productId" element={<Review />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment-success/:orderId" element={<PaymentSuccess />} />
           <Route path="becomeseller" element={<BecomeSeller />} />
           <Route path="/account/*" element={<Account />} />
           <Route path="/seller/*" element={<SellerDashboard />} />

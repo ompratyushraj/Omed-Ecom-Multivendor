@@ -1,15 +1,28 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
+import { useAppDispatch, useAppSelector } from "../../../state/Store";
+import { createDeal } from "../../../state/admin/dealSlice";
 
 const AdminCreateDealForm = () => {
+  const dispatch = useAppDispatch();
+  const {customer} = useAppSelector(store=> store);
   const formik = useFormik({
     initialValues: {
       discount: 0,
       category: "",
     },
     onSubmit: (values) => {
-      console.log("submit", values);
+      console.log("submit", values)
+      const dealData = {
+        discount: values.discount,
+        category: {
+          categoryId: values.category,
+          image: "", // Provide the image URL or path here
+        }
+      };
+      const jwt = localStorage.getItem("jwt") || "";
+      dispatch(createDeal({ deal: dealData, jwt }));
     },
   });
   return (
@@ -41,9 +54,8 @@ const AdminCreateDealForm = () => {
           label="Category"
           onChange={formik.handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {customer.homePageData?.dealCategories.map((item) => <MenuItem value={item.categoryId}>{item.name}
+          </MenuItem>)}
         </Select>
       </FormControl>
 

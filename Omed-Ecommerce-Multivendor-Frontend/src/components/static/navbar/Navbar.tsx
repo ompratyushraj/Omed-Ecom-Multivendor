@@ -15,10 +15,10 @@ import {
   Storefront,
 } from "@mui/icons-material";
 import CategorySheet from "./CategorySheet";
-import { mainCategory } from "../../../customer/data/category/mainCategory";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../state/Store";
+import { mainCategory } from "../../../data/category/mainCategory";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -82,7 +82,7 @@ const Navbar = () => {
               </Button>
             )}
 
-            <IconButton>
+            <IconButton onClick={()=>navigate("/wishlist")}>
               <FavoriteBorder sx={{ fontSize: 29 }} />
             </IconButton>
 

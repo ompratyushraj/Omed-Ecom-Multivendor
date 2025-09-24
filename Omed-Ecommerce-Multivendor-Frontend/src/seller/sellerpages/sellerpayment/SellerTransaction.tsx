@@ -1,9 +1,10 @@
 import React from 'react'
+import TransactionTable from './TransactionTable'
 
 const SellerTransaction = () => {
   return (
     <div>
-      <h1>Seller Transaction</h1>
+      <TransactionTable />
     </div>
   )
 }

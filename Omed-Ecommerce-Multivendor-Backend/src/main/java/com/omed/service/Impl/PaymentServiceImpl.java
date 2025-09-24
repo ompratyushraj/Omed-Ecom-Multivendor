@@ -18,6 +18,7 @@ import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -26,11 +27,22 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
-    private PaymentOrderRepository paymentOrderRepository;
-    private OrderRepository orderRepository;
-    private String apiKey = "apikey";
-    private String apiSecret = "apisecret";
-    private String stripeSecretKey = "stripesecretkey";
+    private final PaymentOrderRepository paymentOrderRepository;
+    private final OrderRepository orderRepository;
+
+    public PaymentServiceImpl(PaymentOrderRepository paymentOrderRepository, OrderRepository orderRepository) {
+        this.paymentOrderRepository = paymentOrderRepository;
+        this.orderRepository = orderRepository;
+    }
+
+    @Value("${razorpay.api.key}")
+    private String apiKey;
+
+    @Value("${razorpay.api.secret}")
+    private String apiSecret;
+
+    @Value("${stripe.api.key}")
+    private String stripeSecretKey;
 
     @Override
     public PaymentOrder createOrder(User user, Set<Order> orders) {
@@ -61,7 +73,9 @@ public class PaymentServiceImpl implements PaymentService {
         if(paymentOrder.getStatus().equals(PaymentOrderStatus.PENDING)){
             RazorpayClient razorpayClient = new RazorpayClient(apiKey, apiSecret);
             Payment payment = razorpayClient.payments.fetch(paymentId);
+
             String status = payment.get("status");
+
             if(status.equals("captured")){
                 Set<Order> orders = paymentOrder.getOrders();
                 for(Order order : orders){

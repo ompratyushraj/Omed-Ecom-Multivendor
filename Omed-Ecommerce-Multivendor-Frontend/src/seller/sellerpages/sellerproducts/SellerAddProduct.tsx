@@ -14,21 +14,19 @@ import React, { useState } from "react";
 import { uploadToCloudinary } from "../../../util/uploadToCloudinary";
 import { useFormik } from "formik";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import { menLevelTwo } from "../../../customer/data/category/leveltwo/menLevelTwo";
-import { womenLevelTwo } from "../../../customer/data/category/leveltwo/womenLevelTwo";
-import { childrenLevelTwo } from "../../../customer/data/category/leveltwo/childrenLevelTwo";
-import { elderLevelTwo } from "../../../customer/data/category/leveltwo/elderLevelTwo";
-import { diagnosisdevicesLevelTwo } from "../../../customer/data/category/leveltwo/diagnosisdevicesLevelTwo";
-import { menLevelThree } from "../../../customer/data/category/levelThree/menLevelThree";
-import { womenLevelThree } from "../../../customer/data/category/levelThree/womenLevelThree";
-import { elderLevelThree } from "../../../customer/data/category/levelThree/elderLevelThree";
-import { childrenLevelThree } from "../../../customer/data/category/levelThree/childrenLevelThree";
-import { diagnosisdevicesLevelThree } from "../../../customer/data/category/levelThree/diagnosisdevicesLevelThree";
-import CloseIcon from "@mui/icons-material/Close";
-import { colors } from "../../../customer/data/filter/colors";
-import { mainCategory } from "../../../customer/data/category/mainCategory";
 import { createProduct } from "../../../state/seller/sellerProductSlice";
 import { useAppDispatch } from "../../../state/Store";
+import { menLevelTwo } from "../../../data/category/leveltwo/menLevelTwo";
+import { womenLevelTwo } from "../../../data/category/leveltwo/womenLevelTwo";
+import { childrenLevelTwo } from "../../../data/category/leveltwo/childrenLevelTwo";
+import { elderLevelTwo } from "../../../data/category/leveltwo/elderLevelTwo";
+import { diagnosisdevicesLevelTwo } from "../../../data/category/leveltwo/diagnosisdevicesLevelTwo";
+import { menLevelThree } from "../../../data/category/levelThree/menLevelThree";
+import { womenLevelThree } from "../../../data/category/levelThree/womenLevelThree";
+import { childrenLevelThree } from "../../../data/category/levelThree/childrenLevelThree";
+import { elderLevelThree } from "../../../data/category/levelThree/elderLevelThree";
+import { diagnosisdevicesLevelThree } from "../../../data/category/levelThree/diagnosisdevicesLevelThree";
+import CloseIcon from '@mui/icons-material/Close';
 
 const categoryTwo: { [key: string]: any[] } = {
   men: menLevelTwo,

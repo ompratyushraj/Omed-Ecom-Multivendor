@@ -8,11 +8,11 @@ import {
   RadioGroup,
 } from "@mui/material";
 import React, { useState } from "react";
-import { colors } from "../../data/filter/colors";
 import { useSearchParams } from "react-router-dom";
 import { teal } from "@mui/material/colors";
-import { discount } from "../../data/filter/discount";
-import { price } from "../../data/filter/price";
+import { colors } from "../../../data/filter/colors";
+import { discount } from "../../../data/filter/discount";
+import { price } from "../../../data/filter/price";
 
 const FilterSection = () => {
   const [expendColor, setExpendColor] = useState(false);

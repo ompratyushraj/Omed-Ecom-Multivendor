@@ -1,24 +1,32 @@
 import { Box, Button, Divider } from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import OrderStepper from "./OrderStepper";
 import { Payments } from "@mui/icons-material";
+import { useAppDispatch, useAppSelector } from "../../../state/Store";
+import { fetchOrderById, fetchOrderItemById } from "../../../state/customer/orderSlice";
 
 const OrderDetail = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const {orderId, orderItemId} = useParams();
+  const {order} = useAppSelector(store => store);
+  useEffect(()=> {
+    dispatch(fetchOrderById({orderId: Number(orderId), jwt:localStorage.getItem("jwt") || ""}))
+    dispatch(fetchOrderItemById({orderItemId: Number(orderItemId), jwt:localStorage.getItem("jwt") || ""}))
+  },[])
   return (
     <Box className="space-y-5 ms-7 ">
       <section className="flex flex-col gap-5 justify-center items-center">
         <img
-          className="w-[100px] rounded-md"
-          src="https://plus.unsplash.com/premium_vector-1683141533721-d648d0bec730?q=80&w=681&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
+          className="w-[100px] rounded-md bg-slate-600"
+          src={order.orderItem?.product.images[0]}
+          alt="OrderDetialImage"
         />
         <div className="text-sm space-y-1 text-center">
-          <h1 className="font-bold">{"Virani Clothing"}</h1>
+          <h1 className="font-bold">{order.orderItem?.product.seller?.businessDetails.businessName}</h1>
           <p>
-            Cellecor RAY 1.43" AMOLED Display | 700 NITS | AOD | BT-Calling | AI
-            Voice | Split Screen Smartwatch (Black Strap, Free Size)
+            {order.orderItem?.product.productTitle}
           </p>
           <p>
             <strong>Size:</strong>M
@@ -38,12 +46,18 @@ const OrderDetail = () => {
         <h1 className="font-bold pb-3">Delivery Address</h1>
         <div className="text-sm space-y-2">
           <div className="flex gap-5 font-medium">
-            <p>{"Zosh"}</p>
+            <p>{order.currentOrder?.shippingAddress.name}</p>
             <Divider flexItem orientation="vertical" />
-            <p>{9283834840}</p>
+            <p>{order.currentOrder?.shippingAddress.mobile}</p>
           </div>
 
-          <p>Ambavadi choke, Banglor, karnataka - 530068</p>
+          <p>
+            {order.currentOrder?.shippingAddress.address}, {" "}
+            {order.currentOrder?.shippingAddress.state}, {" "}
+            {order.currentOrder?.shippingAddress.city} - {" "}
+            {order.currentOrder?.shippingAddress.pinCode} 
+            
+          </p>
         </div>
       </div>
 
@@ -60,7 +74,7 @@ const OrderDetail = () => {
             </p>
           </div>
 
-          <p className="font-medium">₹ {799}.00</p>
+          <p className="font-medium">₹ {order.orderItem?.sellingPrice}.00</p>
         </div>
 
         <div className="px-5 ">
@@ -78,7 +92,7 @@ gap-3 "
       <div>
         <p className="text-xs ms-1">
           <strong>Sold by : </strong>
-          {"Virani Clothing"}
+          {order.orderItem?.product.seller?.businessDetails.businessName}
         </p>
       </div>
 

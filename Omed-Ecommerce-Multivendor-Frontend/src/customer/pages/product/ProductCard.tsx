@@ -5,12 +5,15 @@ import { Favorite, ModeComment } from "@mui/icons-material";
 import { teal } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import type { Product } from "../../../type/ProductType";
+import { useAppDispatch } from "../../../state/Store";
+import { addProductToWishlist } from "../../../state/customer/wishlistSlice";
 
 
 const ProductCard = ({item}:{item:Product}) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     let interval: any | undefined;
@@ -25,6 +28,11 @@ const ProductCard = ({item}:{item:Product}) => {
       if (interval) clearInterval(interval);
     };
   }, [isHovered]);
+
+  const handleWishlist = (event:any) => {
+    event.stopPropagation()
+    item.productId && dispatch(addProductToWishlist({ productId: item.productId}))
+  }
 
   return (
     <>
@@ -49,7 +57,7 @@ const ProductCard = ({item}:{item:Product}) => {
           {isHovered &&
             <div className="indicator flex flex-col items-center space-y-2">
               <div className="flex gap-3">
-                <Button variant="contained" color="primary">
+                <Button onClick={handleWishlist} variant="contained" color="primary">
                   <Favorite sx={{ color: teal[500] }} />
                 </Button>
                 <Button variant="contained" color="primary">
