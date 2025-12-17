@@ -1,0 +1,21 @@
+export const productForm = [
+  { id: "dilution", name: "Dilution", productCount: 3173 },
+  { id: "globules", name: "Globules", productCount: 960 },
+  { id: "tablet", name: "Tablet", productCount: 702 },
+  { id: "paste", name: "Paste", productCount: 385 },
+  { id: "bottle", name: "Bottle", productCount: 359 },
+  { id: "syrup", name: "Syrup", productCount: 320 },
+  { id: "mother-tincture", name: "Mother Tincture", productCount: 265 },
+  { id: "capsule", name: "Capsule", productCount: 214 },
+  { id: "liquid", name: "Liquid", productCount: 201 },
+  { id: "biochemic-tablet", name: "Biochemic Tablet", productCount: 165 },
+  { id: "powder", name: "Powder", productCount: 151 },
+  { id: "drop", name: "Drop", productCount: 149 },
+  { id: "oil", name: "Oil", productCount: 138 },
+  { id: "cream", name: "Cream", productCount: 87 },
+  { id: "jar", name: "Jar", productCount: 87 },
+  { id: "trituration-tablet", name: "Trituration Tablet", productCount: 84 },
+  { id: "biocombination-tablet", name: "Biocombination Tablet", productCount: 79 },
+  { id: "tonic", name: "Tonic", productCount: 66 },
+  { id: "unit", name: "Unit", productCount: 52 }
+];
